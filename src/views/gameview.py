@@ -1,6 +1,7 @@
 from src.states import *
 from src.events import *
 from src.sprites.playersprite import *
+from src.sprites.bulletsprite import *
 
 
 class GameView:
@@ -14,6 +15,7 @@ class GameView:
         self.bg_color = bg
 
         self.all_sprites = pygame.sprite.Group()
+        self.player_bullets = pygame.sprite.Group()
 
     def notify(self, event):
         if event.name == Events.TICK_EVENT:
@@ -29,3 +31,6 @@ class GameView:
 
     def create_player_sprite(self, player):
         return PlayerSprite(player, self.all_sprites)
+
+    def create_player_bullet_sprite(self, bullet_model):
+        PlayerBulletSprite(bullet_model, self.all_sprites, self.player_bullets)

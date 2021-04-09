@@ -1,4 +1,5 @@
 from src.data import *
+from src.models.bullet import *
 
 
 class Player:
@@ -20,3 +21,6 @@ class Player:
         self.x -= self.speed
         if self.x - (PLAYER_WIDTH / 2) < 0:
             self.x = 0 + (PLAYER_WIDTH / 2)
+
+    def shoot(self):
+        return PlayerBullet(self.x, self.y)

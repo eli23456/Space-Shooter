@@ -1,4 +1,5 @@
 from weakref import WeakSet
+import pygame
 
 from src.events import *
 from src.states import *
@@ -19,6 +20,11 @@ class GameController(object):
         if current_state == States.PLAY_STATE:
             if event.name == Events.TICK_EVENT:
                 self.update_models()
+            elif event.name == Events.INPUT_EVENT:
+                if event.key == pygame.K_SPACE:
+                    bullet_model = self.player.shoot()
+                    self.models.add(bullet_model)
+                    self.game_view.create_player_bullet_sprite(bullet_model)
             elif event.name == Events.PLAYER_MOVE_EVENT:
                 if event.direction == "r":
                     self.player.move_right()

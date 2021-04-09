@@ -19,5 +19,11 @@ PLAYER_HEIGHT = 35
 PLAYER_HP = 100
 PLAYER_SPEED = 10
 
+# player bullet data
+PLAYER_BULLET_WIDTH = 10
+PLAYER_BULLET_HEIGHT = 25
+PLAYER_BULLET_SPEED = 12
+
 # file data
 PLAYER_IMG = "player_ship.png"
+PLAYER_BULLET_IMG = "laser_blue.png"

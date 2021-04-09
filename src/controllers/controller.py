@@ -33,3 +33,4 @@ class Controller(object):
 
     def start(self):
         self.game_controller.start()
+        self.input_controller.start()

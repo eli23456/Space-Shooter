@@ -19,6 +19,11 @@ PLAYER_HEIGHT = 35
 PLAYER_HP = 100
 PLAYER_SPEED = 10
 
+# enemy data
+REGULAR_ENEMY_WIDTH = 50
+REGULAR_ENEMY_HEIGHT = 50
+MOVING_ENEMY_SPEED = 2
+
 # player bullet data
 PLAYER_BULLET_WIDTH = 10
 PLAYER_BULLET_HEIGHT = 25
@@ -27,3 +32,4 @@ PLAYER_BULLET_SPEED = 12
 # file data
 PLAYER_IMG = "player_ship.png"
 PLAYER_BULLET_IMG = "laser_blue.png"
+REGULAR_ENEMY_IMG = "enemy_ship.png"

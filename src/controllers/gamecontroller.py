@@ -4,6 +4,7 @@ import pygame
 from src.events import *
 from src.states import *
 from src.models.player import *
+from src.models.enemy import *
 
 
 class GameController(object):
@@ -30,6 +31,14 @@ class GameController(object):
                     self.player.move_right()
                 elif event.direction == "l":
                     self.player.move_left()
+            elif event.name == Events.SPAWN_REGULAR_ENEMY_EVENT:
+                enemy_model = RegularEnemy()
+                self.models.add(enemy_model)
+                self.game_view.create_regular_enemy_sprite(enemy_model)
+            elif event.name == Events.SPAWN_MOVING_ENEMY_EVENT:
+                enemy_model = MovingEnemy()
+                self.models.add(enemy_model)
+                self.game_view.create_moving_enemy_sprite(enemy_model)
 
     def start(self):
         self.game_view = self.view.create_game_view()

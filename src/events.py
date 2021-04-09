@@ -13,6 +13,8 @@ class Events(Enum):
     STATE_CHANGE_EVENT = 7
     INPUT_EVENT = 8
     PLAYER_MOVE_EVENT = 9
+    SPAWN_REGULAR_ENEMY_EVENT = 10
+    SPAWN_MOVING_ENEMY_EVENT = 11
 
 
 class Event(object):
@@ -84,6 +86,18 @@ class PlayerMoveEvent(Event):
     def __init__ (self, direction):
         self.name = Events.PLAYER_MOVE_EVENT
         self.direction = direction
+
+
+class SpawnRegularEnemyEvent(Event):
+
+    def __init__(self):
+        self.name = Events.SPAWN_REGULAR_ENEMY_EVENT
+
+
+class SpawnMovingEnemyEvent(Event):
+
+    def __init__(self):
+        self.name = Events.SPAWN_MOVING_ENEMY_EVENT
 
 
 class EventManager(object):

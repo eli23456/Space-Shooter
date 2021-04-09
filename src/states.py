@@ -9,7 +9,7 @@ class States(Enum):
     GO_STATE = 5
     HELP_STATE = 6
     ABOUT_STATE = 7
-    LEAD_STATE = 8
+    LEADERBOARD_STATE = 8
 
 class StateMachine(object):
 

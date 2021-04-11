@@ -48,3 +48,35 @@ class GameController(object):
     def update_models(self):
         for m in self.models:
             m.update()
+
+        self.check_player_health()
+        self.check_enemy_shots()
+        self.check_collisions()
+
+    def check_player_health(self):
+        if self.player.hp <= 0:
+            self.event_manager.post(QuitEvent())
+
+    def check_enemy_shots(self):
+        temp = []
+        for m in self.models:
+            if isinstance(m, Enemy):
+                if m.can_shoot():
+                    bullet_model = m.shoot()
+                    temp.append(bullet_model)
+
+        for bullet_model in temp:
+            self.models.add(bullet_model)
+            self.game_view.create_enemy_bullet_sprite(bullet_model)
+
+    def check_collisions(self):
+        # collision between enemies and player bullets
+        collisions = pygame.sprite.groupcollide(self.game_view.enemies, self.game_view.player_bullets, False, True)
+        for enemy_sprite, player_bullet in collisions.items():
+            for i in range(len(player_bullet)):
+                enemy_sprite.enemy_model.take_dmg(player_bullet[i].bullet_model.dmg)
+
+        # collision between player and enemy bullets
+        collisions = pygame.sprite.spritecollide(self.game_view.player_sprite, self.game_view.enemy_bullets, True)
+        for enemy_bullet in collisions:
+            self.game_view.player_sprite.player_model.take_dmg(enemy_bullet.bullet_model.dmg)

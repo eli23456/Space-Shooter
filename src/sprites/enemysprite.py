@@ -9,6 +9,10 @@ class EnemySprite(pygame.sprite.Sprite):
     def __init__(self, *groups):
         pygame.sprite.Sprite.__init__(self, groups)
 
+    def is_dead(self):
+        if self.enemy_model.hp <= 0:
+            self.kill()
+
     def update(self):
         pass
 
@@ -25,6 +29,9 @@ class RegularEnemySprite(EnemySprite):
         self.rect.centerx = self.enemy_model.x
         self.rect.centery = self.enemy_model.y
 
+    def update(self):
+        self.is_dead()
+
 
 class MovingEnemySprite(RegularEnemySprite):
 
@@ -32,6 +39,7 @@ class MovingEnemySprite(RegularEnemySprite):
         super().__init__(enemy_model, groups)
 
     def update(self):
+        self.is_dead()
         self.rect.x = self.enemy_model.x
 
         if self.rect.right > WIDTH:

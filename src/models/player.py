@@ -24,3 +24,6 @@ class Player:
 
     def shoot(self):
         return PlayerBullet(self.x, self.y)
+
+    def take_dmg(self, dmg):
+        self.hp -= dmg

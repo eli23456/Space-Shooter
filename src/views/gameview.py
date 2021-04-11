@@ -18,6 +18,7 @@ class GameView:
         self.all_sprites = pygame.sprite.Group()
         self.player_bullets = pygame.sprite.Group()
         self.enemies = pygame.sprite.Group()
+        self.enemy_bullets = pygame.sprite.Group()
 
     def notify(self, event):
         if event.name == Events.TICK_EVENT:
@@ -32,7 +33,8 @@ class GameView:
         pygame.display.flip()
 
     def create_player_sprite(self, player):
-        return PlayerSprite(player, self.all_sprites)
+        self.player_sprite = PlayerSprite(player, self.all_sprites)
+        return self.player_sprite
 
     def create_player_bullet_sprite(self, bullet_model):
         PlayerBulletSprite(bullet_model, self.all_sprites, self.player_bullets)
@@ -42,3 +44,9 @@ class GameView:
 
     def create_moving_enemy_sprite(self, enemy):
         MovingEnemySprite(enemy, self.all_sprites, self.enemies)
+
+    def create_player_bullet_sprite(self, bullet_model):
+        PlayerBulletSprite(bullet_model, self.all_sprites, self.player_bullets)
+
+    def create_enemy_bullet_sprite(self, bullet_model):
+        EnemyBulletSprite(bullet_model, self.all_sprites, self.enemy_bullets)

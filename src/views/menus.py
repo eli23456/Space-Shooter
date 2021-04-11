@@ -49,3 +49,12 @@ class LeaderboardMenu(Menu):
         super().__init__(screen)
 
         Button(self.screen, GREEN, WIDTH/2, HEIGHT/5 + 375, 200, 50, "Back", self.all_sprites, self.buttons)
+
+
+class PauseMenu(Menu):
+
+    def __init__(self, screen):
+        super().__init__(screen)
+
+        Button(self.screen, GREEN, WIDTH/2, HEIGHT/5, 200, 50, "Continue", self.all_sprites, self.buttons)
+        Button(self.screen, GREEN, WIDTH/2, HEIGHT/5 + 75, 200, 50, "Quit", self.all_sprites, self.buttons)

@@ -26,6 +26,8 @@ class GameController(object):
                     bullet_model = self.player.shoot()
                     self.models.add(bullet_model)
                     self.game_view.create_player_bullet_sprite(bullet_model)
+                elif event.key == pygame.K_ESCAPE:
+                    self.event_manager.post(StateChangeEvent(States.PAUSE_STATE))
             elif event.name == Events.PLAYER_MOVE_EVENT:
                 if event.direction == "r":
                     self.player.move_right()

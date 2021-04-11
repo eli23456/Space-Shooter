@@ -24,6 +24,8 @@ class MenuController:
                 self.handle_about_menu(event)
             elif current_state == States.LEADERBOARD_STATE:
                 self.handle_leaderboard_menu(event)
+            elif current_state == States.PAUSE_STATE:
+                self.handle_pause_menu(event)
 
     def load(self):
         self.menu_view = self.view.create_menu_view()
@@ -64,3 +66,12 @@ class MenuController:
                 if button.is_over(event.clickpos):
                     if button.text == "Back":
                         self.event_manager.post(StateChangeEvent(None))
+
+    def handle_pause_menu(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            for button in self.menu_view.pause_menu.buttons:
+                if button.is_over(event.clickpos):
+                    if button.text == "Continue":
+                        self.event_manager.post(StateChangeEvent(None))
+                    elif button.text == "Quit":
+                        self.event_manager.post(QuitEvent())

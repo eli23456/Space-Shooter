@@ -3,6 +3,7 @@ from src.events import *
 from src.sprites.playersprite import *
 from src.sprites.enemysprite import *
 from src.sprites.bulletsprite import *
+from src.views.hud import *
 
 
 class GameView:
@@ -14,6 +15,7 @@ class GameView:
 
         self.screen = screen
         self.bg_color = bg
+        self.hud = GameHud(self.screen)
 
         self.all_sprites = pygame.sprite.Group()
         self.player_bullets = pygame.sprite.Group()
@@ -30,6 +32,7 @@ class GameView:
         self.screen.fill(self.bg_color)
         self.all_sprites.update()
         self.all_sprites.draw(self.screen)
+        self.hud.draw(self.player_sprite.player_model.hp)
         pygame.display.flip()
 
     def create_player_sprite(self, player):

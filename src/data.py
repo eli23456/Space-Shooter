@@ -38,6 +38,10 @@ ENEMY_BULLET_DAMAGE = 1
 ENEMY_BULLET_WIDTH = 10
 ENEMY_BULLET_HEIGHT = 25
 
+# HUD data
+BAR_LENGTH = 100
+BAR_HEIGHT = 10
+
 # file data
 PLAYER_IMG = "player_ship.png"
 PLAYER_BULLET_IMG = "laser_blue.png"

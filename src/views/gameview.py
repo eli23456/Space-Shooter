@@ -53,3 +53,9 @@ class GameView:
 
     def create_enemy_bullet_sprite(self, bullet_model):
         EnemyBulletSprite(bullet_model, self.all_sprites, self.enemy_bullets)
+
+    def clear(self):
+        self.all_sprites.empty()
+        self.player_bullets.empty()
+        self.enemies.empty()
+        self.enemy_bullets.empty()

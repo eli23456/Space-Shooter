@@ -6,7 +6,7 @@ class States(Enum):
     MAIN_STATE = 2
     PLAY_STATE = 3
     PAUSE_STATE = 4
-    GO_STATE = 5
+    GAMEOVER_STATE = 5
     HELP_STATE = 6
     ABOUT_STATE = 7
     LEADERBOARD_STATE = 8

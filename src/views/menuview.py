@@ -16,6 +16,7 @@ class MenuView:
         self.about_menu = AboutMenu(self.screen)
         self.leaderboard_menu = LeaderboardMenu(self.screen)
         self.pause_menu = PauseMenu(self.screen)
+        self.gameover_menu = GameoverMenu(self.screen)
 
     def notify(self, event):
         if event.name == Events.TICK_EVENT:
@@ -30,3 +31,5 @@ class MenuView:
                 self.leaderboard_menu.update()
             elif current_state == States.PAUSE_STATE:
                 self.pause_menu.update()
+            elif current_state == States.GAMEOVER_STATE:
+                self.gameover_menu.update()

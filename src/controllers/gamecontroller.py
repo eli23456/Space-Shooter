@@ -27,6 +27,7 @@ class GameController(object):
                     self.models.add(bullet_model)
                     self.game_view.create_player_bullet_sprite(bullet_model)
                 elif event.key == pygame.K_ESCAPE:
+                    self.event_manager.post(GamePauseEvent())
                     self.event_manager.post(StateChangeEvent(States.PAUSE_STATE))
             elif event.name == Events.PLAYER_MOVE_EVENT:
                 if event.direction == "r":
@@ -47,6 +48,14 @@ class GameController(object):
         self.player = Player()
         self.game_view.create_player_sprite(self.player)
 
+    def gameover(self):
+        self.models.clear()
+        self.game_view.clear()
+
+    def restart(self):
+        self.player = Player()
+        self.game_view.create_player_sprite(self.player)
+
     def update_models(self):
         for m in self.models:
             m.update()
@@ -57,7 +66,8 @@ class GameController(object):
 
     def check_player_health(self):
         if self.player.hp <= 0:
-            self.event_manager.post(QuitEvent())
+            self.event_manager.post(GameOverEvent())
+            self.event_manager.post(StateChangeEvent(States.GAMEOVER_STATE))
 
     def check_enemy_shots(self):
         temp = []

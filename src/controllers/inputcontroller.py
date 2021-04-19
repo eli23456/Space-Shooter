@@ -42,6 +42,18 @@ class InputController:
         self.set_regular_enemy_timer()
         self.set_moving_enemy_timer()
 
+    def pause(self):
+        pygame.time.set_timer(self.spawn_regular_enemy, 0)
+        pygame.time.set_timer(self.spawn_moving_enemy, 0)
+
+    def unpause(self):
+        self.set_regular_enemy_timer()
+        self.set_moving_enemy_timer()
+
+    def restart(self):
+        self.set_regular_enemy_timer()
+        self.set_moving_enemy_timer()
+
     def set_regular_enemy_timer(self):
         pygame.time.set_timer(self.spawn_regular_enemy, random.randrange(1000, 2000))
 

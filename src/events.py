@@ -9,12 +9,16 @@ class Events(Enum):
     INIT_EVENT = 3
     GAME_LOAD_EVENT = 4
     GAME_START_EVENT = 5
-    QUIT_EVENT = 6
-    STATE_CHANGE_EVENT = 7
-    INPUT_EVENT = 8
-    PLAYER_MOVE_EVENT = 9
-    SPAWN_REGULAR_ENEMY_EVENT = 10
-    SPAWN_MOVING_ENEMY_EVENT = 11
+    GAME_PAUSE_EVENT = 6
+    GAME_UNPAUSE_EVENT = 7
+    GAME_OVER_EVENT = 8
+    GAME_RESTART_EVENT = 9
+    QUIT_EVENT = 10
+    STATE_CHANGE_EVENT = 11
+    INPUT_EVENT = 12
+    PLAYER_MOVE_EVENT = 13
+    SPAWN_REGULAR_ENEMY_EVENT = 14
+    SPAWN_MOVING_ENEMY_EVENT = 15
 
 
 class Event(object):
@@ -46,13 +50,37 @@ class GameLoadEvent(Event):
 
 class GameStartEvent(Event):
 
-    def __init__ (self):
+    def __init__(self):
         self.name = Events.GAME_START_EVENT
+
+
+class GamePauseEvent(Event):
+
+    def __init__(self):
+        self.name = Events.GAME_PAUSE_EVENT
+
+
+class GameUnpauseEvent(Event):
+
+    def __init__(self):
+        self.name = Events.GAME_UNPAUSE_EVENT
+
+
+class GameOverEvent(Event):
+
+    def __init__(self):
+        self.name = Events.GAME_OVER_EVENT
+
+
+class GameRestartEvent(Event):
+
+    def __init__(self):
+        self.name = Events.GAME_RESTART_EVENT
 
 
 class QuitEvent(Event):
 
-    def __init__ (self):
+    def __init__(self):
         self.name = Events.QUIT_EVENT
 
 

@@ -21,6 +21,14 @@ class Controller(object):
             self.load()
         elif event.name == Events.GAME_START_EVENT:
             self.start()
+        elif event.name == Events.GAME_PAUSE_EVENT:
+            self.pause()
+        elif event.name == Events.GAME_UNPAUSE_EVENT:
+            self.unpause()
+        elif event.name == Events.GAME_OVER_EVENT:
+            self.gameover()
+        elif event.name == Events.GAME_RESTART_EVENT:
+            self.restart()
 
     def initialize(self):
         self.state_controller = StateController(self.state_machine, self.event_manager)
@@ -34,3 +42,17 @@ class Controller(object):
     def start(self):
         self.game_controller.start()
         self.input_controller.start()
+
+    def pause(self):
+        self.input_controller.pause()
+
+    def unpause(self):
+        self.input_controller.unpause()
+
+    def gameover(self):
+        self.input_controller.pause()
+        self.game_controller.gameover()
+
+    def restart(self):
+        self.input_controller.restart()
+        self.game_controller.restart()

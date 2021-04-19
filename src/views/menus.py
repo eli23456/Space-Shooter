@@ -58,3 +58,13 @@ class PauseMenu(Menu):
 
         Button(self.screen, GREEN, WIDTH/2, HEIGHT/5, 200, 50, "Continue", self.all_sprites, self.buttons)
         Button(self.screen, GREEN, WIDTH/2, HEIGHT/5 + 75, 200, 50, "Quit", self.all_sprites, self.buttons)
+
+
+class GameoverMenu(Menu):
+
+    def __init__(self, screen):
+        super().__init__(screen)
+
+        Button(self.screen, GREEN, WIDTH/2, HEIGHT/5, 200, 50, "Main Menu", self.all_sprites, self.buttons)
+        Button(self.screen, GREEN, WIDTH / 2, HEIGHT/5 + 75, 200, 50, "Restart", self.all_sprites, self.buttons)
+        Button(self.screen, GREEN, WIDTH/2, HEIGHT/5 + 150, 200, 50, "Quit", self.all_sprites, self.buttons)
